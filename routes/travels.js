@@ -111,4 +111,21 @@ router.get("/:id/reservations", (req, res) => {
   );
 });
 
+// recupération de la keyword lier au travel
+router.get("/:id/keywords", (req, res) => {
+  const id = req.params.id;
+
+  connection.query(
+    "SELECT * FROM travel_keyword as tk JOIN travel as t ON t.id = tk.id_travel JOIN keyword as k ON k.id = tk.id_keyword WHERE t.id = ? ",
+    id,
+    (err, results) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 module.exports = router;

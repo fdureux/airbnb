@@ -230,6 +230,26 @@ const swaggerDocument = {
         },
       },
     },
+    "/travels/:id/keywords": {
+      get: {
+        description: "Returns all keywords of one travel with is id (ex: 1",
+        produces: ["application/json"],
+        parameters: [
+          {
+            in: "params",
+            name: "id",
+            description: "Travel id",
+            required: false,
+            type: "string",
+          },
+        ],
+        responses: {
+          "200": {
+            description: "all keywords of one travel.",
+          },
+        },
+      },
+    },
     "/pictures": {
       get: {
         description: "Returns all pictures",
@@ -251,8 +271,8 @@ const swaggerDocument = {
           },
           {
             in: "params",
-            name: "id_accomodation",
-            description: "Accomodation id",
+            name: "id_travel",
+            description: "Travel id",
             required: false,
             type: "int",
           },
@@ -270,7 +290,7 @@ const swaggerDocument = {
         },
       },
       post: {
-        description: "Create one picture with parameter : url, id_accomodation",
+        description: "Create one picture with parameter : url, travel",
         consumes: ["application/json"],
         produces: ["application/json"],
         parameters: [
@@ -293,7 +313,7 @@ const swaggerDocument = {
         },
       },
       put: {
-        description: "Modify one picture with parameter : url, id_accomodation",
+        description: "Modify one picture with parameter : url, travel",
         consumes: ["application/json"],
         produces: ["application/json"],
         parameters: [
@@ -367,8 +387,8 @@ const swaggerDocument = {
           },
           {
             in: "params",
-            name: "id_accomodation",
-            description: "Accomodation id",
+            name: "id_travel",
+            description: "Travel id",
             required: false,
             type: "int",
           },
@@ -394,7 +414,7 @@ const swaggerDocument = {
       },
       post: {
         description:
-          "Create one reservation with parameter : date_begin, date_end, id_accomodation, id_user",
+          "Create one reservation with parameter : date_begin, date_end, id_travel, id_user",
         consumes: ["application/json"],
         produces: ["application/json"],
         parameters: [
@@ -418,7 +438,7 @@ const swaggerDocument = {
       },
       put: {
         description:
-          "Modify one reservation with parameter : date_begin, date_end, id_accomodation, id_user",
+          "Modify one reservation with parameter : date_begin, date_end, id_travel, id_user",
         consumes: ["application/json"],
         produces: ["application/json"],
         parameters: [
@@ -584,7 +604,7 @@ const swaggerDocument = {
     },
   },
   definitions: {
-    accomodationItem: {
+    travelItem: {
       type: "object",
       properties: {
         id: {
@@ -592,15 +612,15 @@ const swaggerDocument = {
           format: "id",
           example: "1",
         },
-        name: {
+        title: {
           type: "string",
-          example: "Villa",
+          example: "Test",
         },
         description: {
           type: "string",
-          example: "Super Villa",
+          example: "Description",
         },
-        capacity: {
+        level: {
           type: "int",
           example: "1",
         },
@@ -608,21 +628,13 @@ const swaggerDocument = {
           type: "int",
           example: "100",
         },
-        adress: {
+        era: {
           type: "string",
-          example: "3 rue du Goeland",
-        },
-        fees: {
-          type: "int",
-          example: "30",
-        },
-        codepostal: {
-          type: "int",
-          example: "33000",
+          example: "Antique",
         },
         country: {
           type: "string",
-          example: "France",
+          example: "Grece",
         },
       },
     },
@@ -640,7 +652,7 @@ const swaggerDocument = {
           example:
             "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFhUWGBcYFxgWGRceGhcaFxUYFxgaGhcYHiggGRolHRcVIjEiJSkrLi4uHR8zODMsNygtLisBCgoKDg0OGxAQGy0lHSUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMIBAwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAAIDBQYBBwj/xABEEAABAgQEAwUGAwUGBQUAAAABAhEAAyExBBJBUQVhcRMigZGxBjKhwdHwQlLhFCMzcoIHFWKSsvFDU3OTohYkRIPC/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwQF/8QAKxEAAgIBBAIBAwIHAAAAAAAAAAECEQMSITFBBBNRIjJhcZEFFEKBobHB/9oADAMBAAIRAxEAP",
         },
-        id_accomodation: {
+        id_travel: {
           type: "id",
           example: "1",
         },
@@ -664,7 +676,7 @@ const swaggerDocument = {
           format: "datetime",
           example: "2020-03-03 12:03:02",
         },
-        id_accomodation: {
+        id_travel: {
           type: "int",
           format: "id",
           example: "1",
