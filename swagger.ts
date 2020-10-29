@@ -250,6 +250,26 @@ const swaggerDocument = {
         },
       },
     },
+    "/travels/title/:id": {
+      get: {
+        description: "Returns all keywords of one travel with is title (ex: 1",
+        produces: ["application/json"],
+        parameters: [
+          {
+            in: "params",
+            name: "title",
+            description: "Travel title",
+            required: false,
+            type: "string",
+          },
+        ],
+        responses: {
+          "200": {
+            description: "all keywords of one travel.",
+          },
+        },
+      },
+    },
     "/pictures": {
       get: {
         description: "Returns all pictures",
