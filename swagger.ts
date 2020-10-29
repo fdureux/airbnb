@@ -250,6 +250,26 @@ const swaggerDocument = {
         },
       },
     },
+    "/keywords/:id/travels": {
+      get: {
+        description: "Returns all travels of one keywords with is id (ex: 1",
+        produces: ["application/json"],
+        parameters: [
+          {
+            in: "params",
+            name: "id",
+            description: "Keyword id",
+            required: false,
+            type: "string",
+          },
+        ],
+        responses: {
+          "200": {
+            description: "all travels of one keyword.",
+          },
+        },
+      },
+    },
     "/travels/title/:id": {
       get: {
         description: "Returns all keywords of one travel with is title (ex: 1",

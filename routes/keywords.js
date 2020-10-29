@@ -77,4 +77,21 @@ router.delete("/:id", (req, res) => {
   );
 });
 
+// recupération de all travel lier au keyword
+router.get("/:id/travels", (req, res) => {
+  const id = req.params.id;
+
+  connection.query(
+    "SELECT tk.id_travel FROM travel_keyword as tk JOIN travel as t ON t.id = tk.id_travel JOIN keyword as k ON k.id = tk.id_keyword WHERE tk.id_travel = ? ",
+    id,
+    (err, results) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 module.exports = router;
