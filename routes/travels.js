@@ -42,6 +42,22 @@ router.get("/:id", (req, res) => {
   );
 });
 
+// récupération d"une donnée
+router.get("/title/:id", (req, res) => {
+  const idParams = req.params.id;
+  connection.query(
+    "SELECT * FROM travel WHERE title = ?",
+    idParams,
+    (err, results) => {
+      if (err) {
+        res.sendStatus(err);
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 // modification d"une donnée
 router.put("/:id", (req, res) => {
   const idParams = req.params.id;
