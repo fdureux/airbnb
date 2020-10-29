@@ -116,7 +116,7 @@ router.get("/:id/keywords", (req, res) => {
   const id = req.params.id;
 
   connection.query(
-    "SELECT * FROM travel_keyword as tk JOIN travel as t ON t.id = tk.id_travel JOIN keyword as k ON k.id = tk.id_keyword WHERE t.id = ? ",
+    "SELECT tk.id_keyword FROM travel_keyword as tk JOIN travel as t ON t.id = tk.id_travel JOIN keyword as k ON k.id = tk.id_keyword WHERE tk.id_travel = ? ",
     id,
     (err, results) => {
       if (err) {
