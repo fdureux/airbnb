@@ -85,9 +85,9 @@ router.delete("/:id", (req, res) => {
     idParams,
     (err, results) => {
       if (err) {
-        res.sendStatus(err);
+        res.sendStatus(500);
       } else {
-        res.sendStatus(200);
+        res.sendStatus(204);
       }
     }
   );
